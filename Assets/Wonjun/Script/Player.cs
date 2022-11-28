@@ -25,7 +25,7 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        below = Physics2D.Raycast(transform.position, Vector2.down, 3f, a);
+        below = Physics2D.Raycast(transform.position, Vector2.down, 0.5f, a);
 
         if (Input.GetKeyDown(KeyCode.Space)&& below == true)
         {
