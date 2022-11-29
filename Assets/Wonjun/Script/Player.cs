@@ -7,7 +7,9 @@ public class Player : MonoBehaviour
     [SerializeField] private float speed = 4;
     [SerializeField] private float attackcool = 0.6f;
     [SerializeField] private float slidecool = 0.6f;
+    public float Hp = 10f;
     Vector3 dir;
+
 
 
     private Rigidbody2D _rigid;
@@ -85,6 +87,10 @@ public class Player : MonoBehaviour
             
             StartCoroutine(Dodge());
         }
+    }
+    public void Portal()
+    {
+
     }
 
     IEnumerator Jump()
