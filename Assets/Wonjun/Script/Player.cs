@@ -6,6 +6,7 @@ public class Player : MonoBehaviour
 {
     [SerializeField] private float speed = 4;
     [SerializeField] private float attackcool = 0.6f;
+    [SerializeField] private float slidecool = 0.6f;
     Vector3 dir;
 
 
@@ -38,6 +39,7 @@ public class Player : MonoBehaviour
             StartCoroutine(Jump());
         }
         attackcool += Time.deltaTime;
+        slidecool += Time.deltaTime;
 
 
         float x = Input.GetAxisRaw("Horizontal");
@@ -64,18 +66,24 @@ public class Player : MonoBehaviour
             anim.SetTrigger("Attack");
             attackcool = 0;
             attDown = false;
-            StartCoroutine(attackpos());
+            StartCoroutine(Attackpos());
         }
         if (Input.GetMouseButtonDown(0) && below == false && attDown == true)
         {
             anim.SetBool("Jattack", true);
-            StartCoroutine(att());
+            StartCoroutine(Att());
             _rigid.gravityScale = 5;
         }
         else if(below == true)
         {
             _rigid.gravityScale = 1;
             anim.SetBool("Jattack", false);
+        }
+
+        if (Input.GetKeyDown(KeyCode.LeftShift) && slidecool >= 0.6f)
+        {
+            
+            StartCoroutine(Dodge());
         }
     }
 
@@ -85,17 +93,25 @@ public class Player : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         anim.SetBool("Jump", false);
     }
-    IEnumerator attackpos()
+    IEnumerator Attackpos()
     {
         speed = 0;
         yield return new WaitForSeconds(0.7f);
         speed = 5;
         attDown = true;
     }
-    IEnumerator att()
+    IEnumerator Att()
     {
         att1 = false;
         yield return new WaitForSeconds(0.7f);
         att1 = true;
+    }
+    IEnumerator Dodge()
+    {
+        anim.SetTrigger("Dodge");
+        speed = 8;
+        yield return new WaitForSeconds(0.5f);
+        speed = 5;
+        slidecool = 0;
     }
 }

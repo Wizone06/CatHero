@@ -275,8 +275,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0048720837, y: 0.009744555}
-  m_Size: {x: 0.3860922, y: 0.5517499}
+  m_Offset: {x: 0.0011024475, y: 0.01571691}
+  m_Size: {x: 0.73249817, y: 0.89972734}
   m_Direction: 0
 --- !u!50 &98186107
 Rigidbody2D:
@@ -380,6 +380,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   attackcool: 0.6
+  slidecool: 0.6
   a:
     serializedVersion: 2
     m_Bits: 64
@@ -638,8 +639,10 @@ PolygonCollider2D:
     m_Paths:
     - - {x: 76.42151, y: 6.210557}
       - {x: -76.02928, y: 6.143278}
-      - {x: -76.28726, y: -28.581165}
-      - {x: 122.859924, y: -28.45554}
+      - {x: -76.51658, y: -15.697626}
+      - {x: -56.282547, y: -15.78899}
+      - {x: 93.621765, y: -16.465858}
+      - {x: 123.6239, y: -16.66831}
       - {x: 122.892166, y: 5.374837}
 --- !u!1 &519420028
 GameObject:
@@ -720,7 +723,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -39.52, y: -2, z: -10}
+  m_LocalPosition: {x: -39.490982, y: 0.03361988, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1390,7 +1393,7 @@ TilemapCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.18}
+  m_Offset: {x: 0, y: -0.15}
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0.00001
 --- !u!483693784 &1651741593
