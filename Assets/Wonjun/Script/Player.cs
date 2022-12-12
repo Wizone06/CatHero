@@ -1,16 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
     [SerializeField] private float speed = 4;
     [SerializeField] private float attackcool = 0.6f;
     [SerializeField] private float slidecool = 0.6f;
-    public float Hp = 10f;
+    public float Hp;
+    public float Hpmax = 10f;
     Vector3 dir;
 
-
+    public Transform player;
+    public Slider hpbar;
 
     private Rigidbody2D _rigid;
     public LayerMask a;
@@ -24,6 +27,7 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Hp = Hpmax;
         sp = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
         _rigid = GetComponent<Rigidbody2D>();
@@ -34,6 +38,9 @@ public class Player : MonoBehaviour
     {
         below = Physics2D.Raycast(transform.position, Vector2.down, 0.5f, a);
         transform.position += dir * speed * Time.deltaTime;
+
+        transform.position = player.position + new Vector3(0, 0, 0);
+        hpbar.value = Hp / Hpmax;
 
         if (Input.GetKeyDown(KeyCode.Space)&& below == true)
         {
