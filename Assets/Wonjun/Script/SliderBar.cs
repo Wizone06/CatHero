@@ -17,6 +17,5 @@ public class SliderBar : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        slider.transform.position = new Vector3(player.transform.position.x, player.transform.position.y + 5f,0);
     }
 }

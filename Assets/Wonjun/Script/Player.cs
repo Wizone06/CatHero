@@ -42,7 +42,7 @@ public class Player : MonoBehaviour
         transform.position = player.position + new Vector3(0, 0, 0);
         hpbar.value = Hp / Hpmax;
 
-        if (Input.GetKeyDown(KeyCode.Space)&& below == true)
+        if (Input.GetKeyDown(KeyCode.Space)&& below == true && attDown == true)
         {
             _rigid.velocity = new Vector2(_rigid.velocity.x, 5f);
             StartCoroutine(Jump());
@@ -70,11 +70,11 @@ public class Player : MonoBehaviour
             anim.SetBool("run", false);
         }
 
-        if (Input.GetMouseButtonDown(0) && below == true && attackcool >= 0.7f&& att1 == true)
+        if (Input.GetMouseButtonDown(0) && below == true && attackcool >= 0.8f&& att1 == true)
         {
+            attDown = false;
             anim.SetTrigger("Attack");
             attackcool = 0;
-            attDown = false;
             StartCoroutine(Attackpos());
         }
         if (Input.GetMouseButtonDown(0) && below == false && attDown == true)
